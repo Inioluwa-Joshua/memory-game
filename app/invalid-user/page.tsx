@@ -26,7 +26,7 @@ const InvalidUser = () => {
     }, 1000);
 
     const redirectTimer = setTimeout(() => {
-      router.push("/"); // Redirect to the main site
+      router.push("https://gamesbyini.com/tournament"); // Redirect to the main site
     }, 5000); // Redirect after 5 seconds
 
     return () => {
