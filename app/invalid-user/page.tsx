@@ -1,15 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const InvalidUser = () => {
   const [countdown, setCountdown] = useState(5); // Countdown in seconds
+  const [reason, setReason] = useState<string | null>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const reason = searchParams.get("reason");
 
   useEffect(() => {
+    // Parse query parameters manually
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      setReason(searchParams.get("reason"));
+    }
+
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
@@ -21,7 +26,7 @@ const InvalidUser = () => {
     }, 1000);
 
     const redirectTimer = setTimeout(() => {
-      router.push("http://localhost:3000"); // Redirect to the main site
+      router.push("/"); // Redirect to the main site
     }, 5000); // Redirect after 5 seconds
 
     return () => {
