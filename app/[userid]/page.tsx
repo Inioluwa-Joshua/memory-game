@@ -1,7 +1,7 @@
 import MemoryGamePage from "@/components/MemoryGamePage";
 
 async function getUserData(userId: string) {
-  const response = await fetch(`http://localhost:3000/api/player/${userId}`);
+  const response = await fetch(`https://gamesbyini.com/api/player/${userId}`);
   if (!response.ok) throw new Error("User not found");
 
   const data = await response.json();

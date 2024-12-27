@@ -26,7 +26,7 @@ export async function middleware(req: NextRequest) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/player/${userId}`);
+    const response = await fetch(`https://gamesbyini.com/api/player/${userId}`);
     const user = await response.json();
 
     if (response.ok) {
